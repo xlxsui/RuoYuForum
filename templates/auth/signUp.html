@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+
+    <meta charset="utf-8">
+    <title>注册(SignUp)</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="header">
+    <img class="logo" src="{{ url_for('static',filename='img/logo.png') }}"/>
+    <img class="ruoyu" src="{{ url_for('static',filename='img/RuoYu.png') }}"/>
+    <a href="{{ url_for('auth.signup') }}" class="button1">注册</a>
+    <a href="{{ url_for('auth.login') }}" class="button2">登陆</a>
+</div>
+<div class="page-container">
+    <h1>注册(SignUp)</h1>
+    <h5 style="color: #e33274;">{{ get_flashed_messages()[0] }}</h5>
+    <form method="post" onSubmit="return validate(this)">
+        <input type="text" name="email" class="email" placeholder="请输入您的邮箱！">
+        <input type="text" name="nikeName" class="nikeName" placeholder="请设置您的昵称！">
+        <p>密码为八位字母或数字的组合，且以字母开头</p>
+        <input type="password" name="password" class="password" placeholder="请设置您的用户密码！">
+        <input type="password" name="password1" class="password1" placeholder="再次确认您的用户密码！">
+        <button type="submit" class="submit_button">注册</button>
+        <div class="error"><span>+</span></div>
+    </form>
+</div>
+<script type="text/javascript">//验证用户邮箱格式+密码格式
+function validate(form) {
+    var flag = false;
+    var flag1 = false;
+    var pass1 = form.password1.value;
+    var pass = form.password.value;
+    var email = form.email.value;
+    if ("" === email || email == null) {
+        alert("邮箱地址不能为空");
+        form.email.focus();
+        flag = false;
+    } else if (/^(\w)+@(\w)+((\.(\w){2,3}){1,2})$/.test(email)) {
+        flag = true;
+    } else {
+        alert("错误的邮箱格式");
+        form.email.focus();
+        flag = false;
+    }
+
+    // 用户邮箱是否正确的标志为flag
+    //用户密码格式是否正确的标志为flag1
+    if (pass.length < 8) {
+        alert("密码长度至少为8位！");
+        flag1 = false;
+    }
+    else if (isFirst(form)) {
+        alert("密码必须以字母开头");
+        flag1 = false;
+    }
+    else if (pass.length < 1) {//若第一密码长度小于1
+        alert("请输入密码");
+        flag1 = false;
+    }
+    else if (pass1.length < 1) {//若第二密码长度小于1
+        alert("请输入密码");
+        flag1 = false;
+    }
+    else if (pass !== pass1) {
+        alert("两次密码输入不一致！");
+        flag1 = false;
+    }
+    else {
+        flag1 = true
+    }
+    if (flag && flag1) {
+        alert("提交中……")
+    }
+    return (flag && flag1);
+}
+
+function isSpace(form) {
+    var pass = form.password.value.split("");
+
+    for (i = 0; i < pass.length; i++) {
+        if (pass[i] == " ") {
+            return true;
+        } else if (!((pass[i] < "z" && pass[i] > "a") || (pass[i] < "Z" && pass[i] > "A") || (pass[i] < "9" && pass[i] > "0"))) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function isFirst(form) {
+    var pass = form.password.value.split("");
+    if (pass[0] < "9" && pass[0] > "0") {
+        return true;
+    }
+    return false;
+}
+</script>
+
+</body>
+</html>
+

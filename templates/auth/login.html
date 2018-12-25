@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+
+    <meta charset="utf-8">
+    <title>登录(Login)</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="header">
+    <img class="logo" src="{{ url_for('static',filename='img/logo.png') }}"/>
+    <img class="ruoyu" src="{{ url_for('static',filename='img/RuoYu.png') }}"/>
+    <a href="{{ url_for('auth.signup') }}" class="button1">注册</a>
+    <a href="{{ url_for('auth.login') }}" class="button2">登陆</a>
+</div>
+<div class="page-container">
+    <h1>登录(Login)</h1>
+    <h5 style="color: #e33274;">{{ get_flashed_messages()[0] }}</h5>
+    <form action="" method="post" onSubmit="return validate(this)">
+        <input type="text" name="email" class="email" placeholder="请输入您的邮箱！">
+        <input type="password" name="password" class="password" placeholder="请输入您的用户密码！">
+        <button type="submit" class="submit_button">登录</button>
+        <div class="error"><span>+</span></div>
+    </form>
+</div>
+<script type="text/javascript">//验证用户邮箱格式是否正确的
+function validate(form) {
+    var flag = false;
+    var email = form.email.value;
+    if ("" == email || email == null) {
+        alert("邮箱地址不能为空");
+        form.email.focus();
+        flag = false;
+    } else {
+        if (/^(\w)+@(\w)+((\.(\w){2,3}){1,2})$/.test(email)) {
+            flag = true;
+        } else {
+            alert("错误的邮箱格式");
+            form.email.focus();
+            flag = false;
+        }
+    }
+    return flag;
+}
+</script>
+
+</body>
+</html>
+

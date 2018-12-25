@@ -1,9 +1,0 @@
-a.c1:link {color: #000000;text-decoration:none;font-family:STXinwei}     /* 未被访问的链接 黑色 */
-    a.c1:visited {color: #2E8557;text-decoration:none;font-family:STXinwei}  /* 已被访问过的链接 绿色 */
-    a.c1:hover {color: #FFCC00;text-decoration:none;font-family:STXinwei}   /* 鼠标悬浮在上的链接 橙色 */
-	h3{text-align:center}
-	.menuDiv1 {width:32px;height:2px;background:#999}
-	.menuDiv2 {width:64px;height:2px;background:#999}
-	.menuDiv3 {width:96px;height:2px;background:#999}
-	.menuDiv4 {width:128px;height:2px;background:#999}
-	.menuDiv5 {width:160px;height:2px;background:#999}

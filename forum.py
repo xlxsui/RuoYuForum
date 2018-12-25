@@ -1,9 +1,10 @@
+import pymysql
+from dbconfig import *
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, url_for, current_app
 )
 from werkzeug.exceptions import abort
 from auth import login_required
-import pymysql
 
 bp = Blueprint('forum', __name__)
 
@@ -11,7 +12,7 @@ bp = Blueprint('forum', __name__)
 @bp.route('/')
 def index():
     # connect mysql
-    db = pymysql.connect("localhost", "root", "154202", "jin")
+    db = pymysql.connect("localhost", DBUser, DBPassword, DBName)
     cur = db.cursor()
     cur.execute(
         'SELECT p.id, title, body, created, author_id, username'
@@ -20,7 +21,7 @@ def index():
     )
     posts = cur.fetchall()
     db.close()
-    return render_template('forum/main1.html', posts=posts)
+    return render_template('forum/Main.html', posts=posts)
 
 
 @bp.route('/create', methods=('GET', 'POST'))

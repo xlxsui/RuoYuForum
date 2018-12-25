@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/static/css/css.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/static/css/htmleaf-demo.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/static/css/menu.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/static/css/normalize.css" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/forum/head1.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/forum/head2.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/forum/index.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/forum/menu1.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/templates/forum/menu2.html" charset="UTF-8" />
+  </component>
+</project>

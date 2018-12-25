@@ -88,29 +88,30 @@ def login():
 
         if error is None:
             session.clear()
-            session['username'] = user[1]
+            session['email'] = user[1]  # the second column
             return redirect(url_for('index'))
         flash(error)
 
     return render_template('auth/login.html')
 
 
+@bp.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('index'))
+
+
+# 已经登陆
 @bp.before_app_request
 def load_logged_in_user():
-    if 'username' not in session:
+    if 'email' not in session:
         g.user = None
     else:
         # 打开数据库连接
         db = pymysql.connect("localhost", DBUser, DBPassword, DBName)
         cur = db.cursor()
         cur.execute(
-            'select * from user where username = %s', session['username']
+            'select * from users where email = %s', session['email']
         )
         g.user = cur.fetchone()
         db.close()
-
-
-@bp.route('/logout')
-def logout():
-    session.clear()
-    return redirect(url_for('index'))

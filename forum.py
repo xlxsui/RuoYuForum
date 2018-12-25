@@ -8,6 +8,8 @@ import pymysql
 bp = Blueprint('forum', __name__)
 
 
+
+
 @bp.route('/')
 def index():
     # connect mysql

@@ -1,9 +1,9 @@
-import functools
+import functools, pymysql
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for, current_app
 )
 from werkzeug.security import check_password_hash, generate_password_hash
-import pymysql
+from dbconfig import *
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -30,7 +30,7 @@ def signup():
         error = None
 
         # 打开数据库连接
-        db = pymysql.connect("localhost", "root", "154202", "jin")
+        db = pymysql.connect("localhost", DBUser, DBPassword, DBName)
         # 使用 cursor() 方法创建一个游标对象 cursor
         cur = db.cursor()
 
@@ -71,7 +71,7 @@ def login():
 
         error = None
         # 打开数据库连接
-        db = pymysql.connect("localhost", "root", "154202", "jin")
+        db = pymysql.connect("localhost", DBUser, DBPassword, DBName)
         cur = db.cursor()
         cur.execute(
             'SELECT * FROM users WHERE email = %s', (email,)
@@ -101,7 +101,7 @@ def load_logged_in_user():
         g.user = None
     else:
         # 打开数据库连接
-        db = pymysql.connect("localhost", "root", "154202", "jin")
+        db = pymysql.connect("localhost", DBUser, DBPassword, DBName)
         cur = db.cursor()
         cur.execute(
             'select * from user where username = %s', session['username']

@@ -5,190 +5,53 @@
     <title>首页-欢迎来到若愚电影论坛</title>
     <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static',filename='css/theMain.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 
 <body>
-
+{#页眉#}
 <div class="header">
-    <img class="logo" src="{{ url_for('static',filename='img/logo.png') }}" alt=""/>
+    <a href="{{ url_for('forum.index') }}">
+        <img class="logo" src="{{ url_for('static',filename='img/logo.png') }}" alt=""/>
+    </a>
     <img class="ruoyu" src="{{ url_for('static',filename='img/RuoYu.png') }}" alt=""/>
     {% if g.user %}
-        <a href="{{ url_for('forum.index') }}" class="button1">{{ g.user[2] }}</a>
-        <a href="{{ url_for('auth.logout') }}" class="button2">注销</a>
+        <img class="touxiang" src="{{ url_for('static',filename='img/avatar/') }}{{ g.user[0] }}.jpg"
+             alt=""/>
+        <a id="userName" href="{{ url_for('forum.index') }}" class="button1">{{ g.user[2] }}</a>
+        <a href="{{ url_for('auth.logout') }}" class="button2">退出</a>
     {% else %}
         <a href="{{ url_for('auth.signup') }}" class="button1">注册</a>
         <a href="{{ url_for('auth.login') }}" class="button2">登陆</a>
     {% endif %}
 </div>
+<div class="bar">
+    <input type="text" placeholder="帖子/电影" name="crid">
+    <button type="submit"></button>
+</div>
+
+{#导航栏#}
 <form id="form1" runat="server">
     <div id="navigation">
         <ul class="side-nav-menu">
             <dt class="side-nav-header">
                 <br><span>Navigation</span>
             </dt>
-            <dt><h3><a href="{{ url_for('forum.index') }}" target="showframe">首页</a></h3></dt>
-            <dt><h3><a href="#">广场</a></h3></dt>
-            <dt><h3><a href="#">正在热映</a></h3></dt>
-            <dt><h3><a href="#">即将上映</a></h3></dt>
+            <dt><h3><a href="{{ url_for('forum.index') }}">首页</a></h3></dt>
+            <dt><h3><a href="{{ url_for('forum.square') }}">广场</a></h3></dt>
+            <dt><h3><a href="{{ url_for('forum.hot') }}">正在热映</a></h3></dt>
+            <dt><h3><a href="{{ url_for('forum.show') }}">即将上映</a></h3></dt>
+            {% if g.user %}
+                <dt><h3><a href="{{ url_for('forum.post') }}">发帖</a></h3></dt>
+                <dt><h3><a href="{{ url_for('forum.square') }}">个人页面</a></h3></dt>
+            {% endif %}
         </ul>
     </div>
 </form>
-<div class="bar">
-    <input type="text" placeholder="帖子/电影" name="crid">
-    <button type="submit"></button>
-</div>
-<div class="box">
-    <div class="list">
-        <ul>
-            <li class="p7"><a href="#"><img src="{{ url_for('static',filename='img/2.jpg') }}" alt=""/></a></li>
-            <li class="p6"><a href="#"><img src="{{ url_for('static',filename='img/1.jpg') }}" alt=""/></a></li>
-            <li class="p5"><a href="#"><img src="{{ url_for('static',filename='img/3.jpg') }}" alt=""/></a></li>
-            <li class="p4"><a href="#"><img src="{{ url_for('static',filename='img/4.jpg') }}" alt=""/></a></li>
-            <li class="p3"><a href="#"><img src="{{ url_for('static',filename='img/5.jpg') }}" alt=""/></a></li>
-            <li class="p2"><a href="#"><img src="{{ url_for('static',filename='img/6.jpg') }}" alt=""/></a></li>
-            <li class="p1"><a href="#"><img src="{{ url_for('static',filename='img/7.jpg') }}" alt=""/></a></li>
-        </ul>
-    </div>
-
-    <a href="javascript:;" class="prev btn"><</a>
-    <a href="javascript:;" class="next btn">></a>
-
-    <div class="buttons">
-        <a href="javascript:;"><span class="blue"></span></a>
-        <a href="javascript:;"><span></span></a>
-        <a href="javascript:;"><span></span></a>
-        <a href="javascript:;"><span></span></a>
-        <a href="javascript:;"><span></span></a>
-        <a href="javascript:;"><span></span></a>
-        <a href="javascript:;"><span></span></a>
-    </div>
-</div>
-
-
-<script type="text/javascript" src="{{ url_for('static',filename='js/jquery-3.1.1.min.js') }}"></script>
-<script type="text/javascript">
-    var $a = $(".buttons a");
-    var $s = $(".buttons span");
-    var cArr = ["p7", "p6", "p5", "p4", "p3", "p2", "p1"];
-    var index = 0;
-    $(".next").click(
-        function () {
-            nextimg();
-        }
-    )
-    $(".prev").click(
-        function () {
-            previmg();
-        }
-    )
-
-    //上一张
-    function previmg() {
-        cArr.unshift(cArr[6]);
-        cArr.pop();
-        //i是元素的索引，从0开始
-        //e为当前处理的元素
-        //each循环，当前处理的元素移除所有的class，然后添加数组索引i的class
-        $("li").each(function (i, e) {
-            $(e).removeClass().addClass(cArr[i]);
-        })
-        index--;
-        if (index < 0) {
-            index = 6;
-        }
-        show();
-    }
-
-    //下一张
-    function nextimg() {
-        cArr.push(cArr[0]);
-        cArr.shift();
-        $("li").each(function (i, e) {
-            $(e).removeClass().addClass(cArr[i]);
-        })
-        index++;
-        if (index > 6) {
-            index = 0;
-        }
-        show();
-    }
-
-    //通过底下按钮点击切换
-    $a.each(function () {
-        $(this).click(function () {
-            var myindex = $(this).index();
-            var b = myindex - index;
-            if (b == 0) {
-                return;
-            }
-            else if (b > 0) {
-                /*
-                 * splice(0,b)的意思是从索引0开始,取出数量为b的数组
-                 * 因为每次点击之后数组都被改变了,所以当前显示的这个照片的索引才是0
-                 * 所以取出从索引0到b的数组,就是从原本的这个照片到需要点击的照片的数组
-                 * 这时候原本的数组也将这部分数组进行移除了
-                 * 再把移除的数组添加的原本的数组的后面
-                 */
-                var newarr = cArr.splice(0, b);
-                cArr = $.merge(cArr, newarr);
-                $("li").each(function (i, e) {
-                    $(e).removeClass().addClass(cArr[i]);
-                })
-                index = myindex;
-                show();
-            }
-            else if (b < 0) {
-                /*
-                 * 因为b<0,所以取数组的时候是倒序来取的,也就是说我们可以先把数组的顺序颠倒一下
-                 * 而b现在是负值,所以取出索引0到-b即为需要取出的数组
-                 * 也就是从原本的照片到需要点击的照片的数组
-                 * 然后将原本的数组跟取出的数组进行拼接
-                 * 再次倒序,使原本的倒序变为正序
-                 */
-                cArr.reverse();
-                var oldarr = cArr.splice(0, -b)
-                cArr = $.merge(cArr, oldarr);
-                cArr.reverse();
-                $("li").each(function (i, e) {
-                    $(e).removeClass().addClass(cArr[i]);
-                })
-                index = myindex;
-                show();
-
-            }
-        })
-    })
-
-    //改变底下按钮的背景色
-    function show() {
-        $($s).eq(index).addClass("blue").parent().siblings().children().removeClass("blue");
-    }
-
-    //点击class为p2的元素触发上一张照片的函数
-    $(document).on("click", ".p2", function () {
-        previmg();
-        return false;//返回一个false值，让a标签不跳转
-    });
-
-    //点击class为p4的元素触发下一张照片的函数
-    $(document).on("click", ".p4", function () {
-        nextimg();
-        return false;
-    });
-
-    //鼠标移入box时清除定时器
-    $(".box").mouseover(function () {
-        clearInterval(timer);
-    })
-
-    //鼠标移出box时开始定时器
-    $(".box").mouseleave(function () {
-        timer = setInterval(nextimg, 4000);
-    })
-
-    //进入页面自动开始定时器
-    timer = setInterval(nextimg, 4000);
-</script>
+{#右下角内容#}
+{% block content %}
+    <iframe class="iframe" name="iframe" src="{{ url_for('forum.slideshow') }}" width="1600" height="800"></iframe>
+{% endblock %}
 
 </body>
 </html>

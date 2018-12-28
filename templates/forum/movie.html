@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <link type="text/css" href="{{ url_for('static',filename='css/star.css') }}" rel="stylesheet"/>
+    <script type="text/javascript" src="{{ url_for('static',filename='js/jquery-2.12.3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static',filename='js/script.js') }}"></script>
+</head>
+<body>
+<img src="{{ url_for('static',filename='img/dongwu.jpg') }}" width="320" height="440"
+     style="position:absolute; left:50px; top:50px;"/>
+<div style="position:absolute; left:400px; top:55px;">
+    <p><span>导演:</span> 大卫·叶茨</p>
+    <p><span>编剧:</span> J·K·罗琳</p>
+    <p><span>主演:</span> 埃迪·雷德梅恩 / 凯瑟琳·沃特斯顿 / 约翰尼·德普 / 裘德·洛 / 埃兹拉·米勒 / 更多...</p>
+    <p><span>类型:</span> 奇幻 / 冒险</p>
+    <p><span>制片国家/地区:</span> 美国 / 英国</p>
+    <p><span>语言:</span> 英语</p>
+    <p><span>上映日期:</span> 2018-11-16(中国大陆/美国)</p>
+    <p><span>片长:</span> 134分钟</p>
+    <p><span>又名:</span> 神奇动物在哪里2：格林德沃之罪 / 怪兽与葛林戴华德之罪(港) / 怪兽与葛林戴华德的罪行(台) / 神奇动物在哪里2 / 神奇动物2 / Fantastic Beasts and Where
+        to Find Them 2</p>
+
+
+    <!--星星-->
+    <div class="xzw_starSys" style="position:absolute; left:0px; top:310px;">
+        <div class="xzw_starBox">
+            <ul class="star stars">
+                <li><a href="javascript:void(0)" title="1" class="one-star">1</a></li>
+                <li><a href="javascript:void(0)" title="2" class="two-stars">2</a></li>
+                <li><a href="javascript:void(0)" title="3" class="three-stars">3</a></li>
+                <li><a href="javascript:void(0)" title="4" class="four-stars">4</a></li>
+                <li><a href="javascript:void(0)" title="5" class="five-stars">5</a></li>
+            </ul>
+            <div class="current-rating showb"></div>
+        </div>
+        <!--评价文字-->
+        <div class="description"></div>
+        <!--评价选项-->
+        <div class="option">
+            <ul class="option-con clearfix">
+                <li><a href="">差劲</a></li>
+                <li><a href="">体验极差</a></li>
+                <li><a href="">这波亏了</a></li>
+            </ul>
+            <ul class="option-con clearfix" style="display:none">
+                <li><a href="">心情难以形容</a></li>
+                <li><a href="">不怎么乐观</a></li>
+                <li><a href="">看不懂</a></li>
+            </ul>
+            <ul class="option-con clearfix" style="display:none">
+                <li><a href="">一般</a></li>
+                <li><a href="">值这个票价</a></li>
+                <li><a href="">观影效果不错</a></li>
+                <li><a href="">不错的电影</a></li>
+            </ul>
+            <ul class="option-con clearfix" style="display:none">
+                <li><a href="">电影有深度</a></li>
+                <li><a href="">良心之作</a></li>
+                <li><a href="">哎哟不错哦</a></li>
+            </ul>
+        </div>
+        <div class="prompt">请为该电影评分</div>
+    </div>
+
+</div>
+<a href="{{ url_for('forum.postcontent') }}" class="button button1" style="position:absolute; left:50px; top:550px;"><p>
+    写影评</p>
+</a>
+</body>
+</html>

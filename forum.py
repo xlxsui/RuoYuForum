@@ -1,7 +1,7 @@
 import pymysql
 from dbconfig import *
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, url_for, current_app
+    Blueprint, flash, g, redirect, render_template, request, url_for
 )
 from werkzeug.exceptions import abort
 from auth import login_required
@@ -9,27 +9,34 @@ from auth import login_required
 bp = Blueprint('forum', __name__)
 
 
+# 首页
 @bp.route('/')
 def index():
     # connect mysql
     db = pymysql.connect("localhost", DBUser, DBPassword, DBName)
     cur = db.cursor()
     cur.execute(
-        'SELECT p.id, title, body, created, author_id, username'
-        ' FROM post p JOIN user u ON p.author_id = u.id'
-        ' ORDER BY created DESC'
+        'SELECT *'
+        ' FROM post'
+        ' ORDER BY Createtime DESC'
     )
-    posts = cur.fetchall()
+    posts = cur.fetchmany(7 + 10)
     db.close()
     return render_template('forum/Main.html', posts=posts)
 
 
+@bp.route('/slideshow')
+def slideshow():
+    return render_template('forum/slideshow.html')
+
+
+# 创建帖子
 @bp.route('/create', methods=('GET', 'POST'))
 @login_required
 def create():
     if request.method == 'POST':
         title = request.form['title']
-        body = request.form['body']
+        content = request.form['content']
         error = None
 
         if not title:
@@ -39,39 +46,20 @@ def create():
             flash(error)
         else:
             # connect mysql
-            db = pymysql.connect("localhost", "root", "154202", "jin")
+            db = pymysql.connect("localhost", DBUser, DBPassword, DBName)
             cur = db.cursor()
             cur.execute(
-                'INSERT INTO post (title, body, author_id)'
-                ' VALUES (?, ?, ?)',
-                (title, body, g.user['id'])
+                'INSERT INTO post (Title, Content, UserId)'
+                ' VALUES (%s, %s, %s)',
+                (title, content, g.user[0])
             )
             db.commit()
             return redirect(url_for('forum.index'))
 
-    return render_template('forum/create.html')
+    return render_template('forum/new.html')
 
 
-def get_post(id, check_author=True):
-    # connect mysql
-    db = pymysql.connect("localhost", "root", "154202", "jin")
-    cur = db.cursor()
-    post = cur.execute(
-        'SELECT p.id, title, body, created, author_id, username'
-        ' FROM post p JOIN user u ON p.author_id = u.id'
-        ' WHERE p.id = ?',
-        (id,)
-    ).fetchone()
-
-    if post is None:
-        abort(404, "Post id {0} doesn't exist.".format(id))
-
-    if check_author and post['author_id'] != g.user['id']:
-        abort(403)
-
-    return post
-
-
+# 编辑帖子
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 @login_required
 def update(id):
@@ -79,7 +67,7 @@ def update(id):
 
     if request.method == 'POST':
         title = request.form['title']
-        body = request.form['body']
+        content = request.form['content']
         error = None
 
         if not title:
@@ -89,12 +77,12 @@ def update(id):
             flash(error)
         else:
             # connect mysql
-            db = pymysql.connect("localhost", "root", "154202", "jin")
+            db = pymysql.connect("localhost", DBUser, DBPassword, DBName)
             cur = db.cursor()
             cur.execute(
-                'UPDATE post SET title = ?, body = ?'
-                ' WHERE id = ?',
-                (title, body, id)
+                'UPDATE post SET Title = ?, Content = ?'
+                ' WHERE Post_id = ?',
+                (title, content, id)
             )
             db.commit()
             return redirect(url_for('forum.index'))
@@ -102,13 +90,82 @@ def update(id):
     return render_template('forum/update.html', post=post)
 
 
+# 删除帖子
 @bp.route('/<int:id>/delete', methods=('POST',))
 @login_required
 def delete(id):
     get_post(id)
     # connect mysql
-    db = pymysql.connect("localhost", "root", "154202", "jin")
+    db = pymysql.connect("localhost", DBUser, DBPassword, DBName)
     cur = db.cursor()
-    cur.execute('DELETE FROM post WHERE id = ?', (id,))
+    cur.execute('DELETE FROM post WHERE Post_id = ?', (id,))
     db.commit()
     return redirect(url_for('forum.index'))
+
+
+# 广场
+@bp.route('/square')
+def square():
+    return render_template('forum/square.html')
+
+
+@bp.route('/squarecontent')
+def squarecontent():
+    return render_template('forum/squarecontent.html')
+
+
+# 热映
+@bp.route('/hot')
+def hot():
+    return render_template('forum/hot.html')
+
+
+@bp.route('/hotcontent')
+def hotcontent():
+    return render_template('forum/hotcontent.html')
+
+
+# 即将上映
+@bp.route('/show')
+def show():
+    return render_template('forum/show.html')
+
+
+@bp.route('/showcontent')
+def showcontent():
+    return render_template('forum/showcontent.html')
+
+
+# 发帖
+@bp.route('/post')
+@login_required
+def post():
+    return render_template('forum/post.html')
+
+
+@bp.route('/postcontent')
+def postcontent():
+    return render_template('forum/postcontent.html')
+
+
+# 个人页面
+
+def get_post(id, check_author=True):
+    # connect mysql
+    db = pymysql.connect("localhost", DBUser, DBPassword, DBName)
+    cur = db.cursor()
+    cur.execute(
+        'SELECT *'
+        ' FROM post p'
+        ' WHERE p.Post_id = ?',
+        (id,)
+    )
+    post = cur.fetchone()
+
+    if post is None:
+        abort(404, "Post id {0} doesn't exist.".format(id))
+
+    if check_author and post[4] != g.user[0]:
+        abort(403)
+
+    return post

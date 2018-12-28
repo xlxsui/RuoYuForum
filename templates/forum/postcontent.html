@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/new.css') }}" type="text/css"/>
+</head>
+<script language="javascript">
+    function check() {
+        if (document.newform.title.value == "") {
+            alert("请输入标题");
+            return false;
+        }
+        if (document.newform.content.value == "") {
+            alert("请输入帖子内容");
+            return false;
+        }
+        return true;
+    }
+</script>
+<body>
+
+<form class="form" action="#" method="post" name=newform onSubmit="return check()">
+
+    <p>
+        <label>请输入标题：</label>
+
+        <input type="text" style="width:1000px" name=title placeholder="帖子主题"/>
+
+    </p>
+
+    <p class="text">
+        <label>请输入内容：</label>
+        <textarea name=content placeholder=畅所欲言吧~></textarea>
+    </p>
+
+    <p class="submit" style="position:absolute;left:1000px;">
+        <input type="submit" value="发表"/>
+        <input type=reset value="重填">
+    </p>
+</form>
+</body>
+</html>  

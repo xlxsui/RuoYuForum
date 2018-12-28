@@ -1,36 +1,56 @@
 body {
     background: #f8f8f8;
     color: #fff;
-	width: 100%;
-	height: 100%;
-	font-family:Microsoft YaHei,Segoe UI,Tahoma,Arial,Verdana,sans-serif;
+    width: 100%;
+    height: 100%;
+    font-family: Microsoft YaHei, Segoe UI, Tahoma, Arial, Verdana, sans-serif;
 }
 
-.header{
+.header {
     height: 65px;
     width: 100%;
     background-color: #fff;
-    margin:auto;
-	position: relative;
+    margin: auto;
+    position: relative;
 }
 
 .logo {
-	width:142px;
-	height:55px;
-    margin:5px 10px;
+    width: 142px;
+    height: 55px;
+    margin: 5px 10px;
 }
 
 .ruoyu {
-	margin:0px 620px;
-	width: 336px;
-	height: 65px;
+    margin: 0px 620px;
+    width: 336px;
+    height: 65px;
+}
+
+.touxiang {
+    position: absolute;
+    width: 3%;
+    height: 85%;
+    margin: 4px auto auto -5px;
+}
+
+#userName {
+    position: absolute;
+    font-size: 14px;
+    color: #99abb4;
+    width: 150px;
+    height: auto;
+    margin-top: -26px;
+    margin-right: 0px;
+    margin-left: 1580px;
+    margin-bottom: auto;
+    text-align: right;
 }
 
 .button1 {
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
-    padding: 8px 16px;/*按钮高和宽*/
+    padding: 8px 16px; /*按钮高和宽*/
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -39,14 +59,14 @@ body {
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     cursor: pointer;
-	position: absolute;
+    position: absolute;
 }
 
 .button2 {
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
-    padding: 8px 16px;/*按钮高和宽*/
+    padding: 8px 16px; /*按钮高和宽*/
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -55,12 +75,28 @@ body {
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     cursor: pointer;
-	position: absolute;
+    position: absolute;
 }
 
-.button1,.button2 {
-    background-color: white; 
-    color: black; 
+.button3 {
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 4px 6px; /*按钮高和宽*/
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 6px;
+    margin: 40px 50px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    position: absolute;
+}
+
+.button1, .button2 {
+    background-color: white;
+    color: black;
     border: 2px solid #FF0080;
 }
 
@@ -74,179 +110,89 @@ body {
     color: white;
 }
 
-#form1 {
-	position:relative;
-	width:250px;
-	height: 800px;
-	margin:0px;
+.button3:hover {
+    background-color: #FF0080;
+    color: black;
 }
 
-#navigation { 
-	background-color:#1a2942;
-    width:250px; 
-	height: 100%;
-    font-family:STXinwei; 
-    text-align:center;
-} 
-#navigation ul { 
-    list-style-type:none; /* 不显示项目符号*/ 
-    margin:0px; 
-    padding:0px; 
-    text-decoration:none; 
-}  
-#navigation dt a { 
-    display:block; /* 区块显示*/ 
-    padding:15px 0px 15px 0.5em; 
-    text-decoration:none; 
-    text-align:center;
-} 
-#navigation dt a:link,#navigation dt a:visited{  /* 超链接正常状态、被访问过的状态*/ 
-    background-color:#1a2942; /* 设置背景色*/ 
-    color:#99abb4; /* 设置文字颜色*/ 
-} 
-#navigation dt a:hover{ /*鼠标经过时*/  
-    background-color:#ff0080; /* 改变背景色*/ 
-    color:#ffffff; /* 改变文字颜色*/ 
-} 
+#form1 {
+    position: relative;
+    width: 250px;
+    height: 800px;
+    margin: 0px;
+}
+
+#navigation {
+    background-color: #1a2942;
+    width: 250px;
+    height: 100%;
+    font-family: STXinwei;
+    text-align: center;
+}
+
+#navigation ul {
+    list-style-type: none; /* 不显示项目符号*/
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+}
+
+#navigation dt a {
+    display: block; /* 区块显示*/
+    padding: 15px 0px 15px 0.5em;
+    text-decoration: none;
+    text-align: center;
+}
+
+#navigation dt a:link, #navigation dt a:visited { /* 超链接正常状态、被访问过的状态*/
+    background-color: #1a2942; /* 设置背景色*/
+    color: #99abb4; /* 设置文字颜色*/
+}
+
+#navigation dt a:hover { /*鼠标经过时*/
+    background-color: #ff0080; /* 改变背景色*/
+    color: #ffffff; /* 改变文字颜色*/
+}
 
 input {
-	position:absolute;
-	left:200px; 
-	top:16px;
-	width:100%;
-	height:38px;
-	padding-left:13px;
+    position: absolute;
+    left: 200px;
+    top: 16px;
+    width: 100%;
+    height: 38px;
+    padding-left: 13px;
 }
 
 .bar input {
-	width:250px;
-	border-radius:42px;
-	border:2px solid #e0e0e0;
-	background:#ffffff;
-	transition:.3s linear;
-	float:right;
+    width: 250px;
+    border-radius: 42px;
+    border: 2px solid #e0e0e0;
+    background: #ffffff;
+    transition: .3s linear;
+    float: right;
 }
 
 .bar input:focus {
-	width:300px;/*点击输入时输入框变长*/
+    width: 300px; /*点击输入时输入框变长*/
 }
 
-.bar button {/*搜索小按钮*/
-	background:none;
-	position:absolute; 
-	left:420px; 
-	top:28px;
-	right:20px;
-	border:none;
-	outline:none;
+.bar button { /*搜索小按钮*/
+    background: none;
+    position: absolute;
+    left: 420px;
+    top: 28px;
+    right: 20px;
+    border: none;
+    outline: none;
 }
+
 .bar button:before {
-	content:"搜索";
-	font-family:FontAwesome;
-	color:#000000;
+    content: "搜索";
+    font-family: FontAwesome;
+    color: #000000;
 }
 
-.box{
-	margin: -740px 300px;
-	width: 80%;
-	height: 340px;
-	position:relative;
-}
-
-.list{
-	width: 1000px;
-	height: 300px;
-	overflow: hidden;
-	position: absolute;
-	left: 59%;
-	margin-left: -600px;
-}
-
-.btn{
-	position: absolute;
-	top: 50%;
-	margin-top: -50px;
-	width: 30px;
-	height: 80px;
-	line-height: 100px;
-	font-size: 30px;
-	color: white;
-	text-decoration: none;
-	text-align: center;
-	background: #FF0080;
-	cursor: pointer;
-}
-.next{
-	right: 0;
-}
-
-.p1,.p2,.p3,.p4,.p5,.p6,.p7{
-	position: absolute;
-	top: 0;
-	left: 00;
-	list-style: none;
-	opacity: 0;
-	transition: all 0.3s ease-out;
-}
-img{
-	width: 600px;
-	height: 300px;
-	border:none;
-	float: left;
-}
-.p1{
-	transform:translate3d(-224px,0,0) scale(0.81);
-}
-.p2{
-	transform:translate3d(0px,0,0) scale(0.81);
-	transform-origin:0 50%;
-	opacity: 0.8;
-	z-index: 2;
-}
-.p3{
-	transform:translate3d(224px,0,0) scale(1);
-	z-index: 3;
-	opacity: 1;
-}
-.p4{
-	transform:translate3d(449px,0,0) scale(0.81);
-	transform-origin:100% 50%;
-	opacity: 0.8;
-	z-index: 2;
-}
-.p5{
-	transform:translate3d(672px,0,0) scale(0.81);
-}
-.p6{
-	transform:translate3d(896px,0,0) scale(0.81);
-}
-.p7{
-	transform:translate3d(1120px,0,0) scale(0.81);
-}
-
-.buttons{
-	position: absolute;
-	width: 1200px;
-	height: 30px;
-	bottom: 0;
-	left: 50%;
-	margin-left: -600px;
-	text-align: center;
-	padding-top: 10px;
-}
-.buttons a{
-	display: inline-block;
-	width: 35px;
-	height: 5px;
-	padding-top: 4px;
-	cursor: pointer;
-}
-.buttons span{
-	display: block;
-	width: 35px;
-	height: 1px;
-	background: #FF0080;
-}
-.blue{
-	background: blue;
+.iframe {
+    position: absolute;
+    margin: -800px 250px;
 }

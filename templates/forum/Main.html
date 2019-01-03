@@ -3,9 +3,13 @@
 <head>
     <meta charset="utf-8">
     <title>首页-欢迎来到若愚电影论坛</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <!-- CSS -->
     <link rel="stylesheet" href="{{ url_for('static',filename='css/theMain.css') }}">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <script src="{{ url_for('static',filename='js/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+
 </head>
 
 <body>
@@ -16,10 +20,14 @@
     </a>
     <img class="ruoyu" src="{{ url_for('static',filename='img/RuoYu.png') }}" alt=""/>
     {% if g.user %}
-        <img class="touxiang" src="{{ url_for('static',filename='img/avatar/') }}{{ g.user[0] }}.jpg"
-             alt=""/>
-        <a id="userName" href="{{ url_for('forum.index') }}" class="button1">{{ g.user[2] }}</a>
+
+        <a style="margin: 16px;margin-left:-100px;color: #ff0080;"
+           href="{{ url_for('user.personal_page',id=g.user[0]) }}">{{ g.user[2] }}</a>
+        <a href="{{ url_for('user.personal_page',id=g.user[0]) }}">
+            <img class="touxiang rounded-circle" src="{{ url_for('static',filename='') }}{{ g.user[5] }}" alt=""/>
+        </a>
         <a href="{{ url_for('auth.logout') }}" class="button2">退出</a>
+
     {% else %}
         <a href="{{ url_for('auth.signup') }}" class="button1">注册</a>
         <a href="{{ url_for('auth.login') }}" class="button2">登陆</a>
@@ -27,7 +35,7 @@
 </div>
 <div class="bar">
     <input type="text" placeholder="帖子/电影" name="crid">
-    <button type="submit"></button>
+    <button class="btn btn-primary text-black-50" type="submit">搜索</button>
 </div>
 
 {#导航栏#}
@@ -35,22 +43,22 @@
     <div id="navigation">
         <ul class="side-nav-menu">
             <dt class="side-nav-header">
-                <br><span>Navigation</span>
+                <br><span style="color: white;">Navigation</span>
             </dt>
             <dt><h3><a href="{{ url_for('forum.index') }}">首页</a></h3></dt>
             <dt><h3><a href="{{ url_for('forum.square') }}">广场</a></h3></dt>
             <dt><h3><a href="{{ url_for('forum.hot') }}">正在热映</a></h3></dt>
             <dt><h3><a href="{{ url_for('forum.show') }}">即将上映</a></h3></dt>
             {% if g.user %}
-                <dt><h3><a href="{{ url_for('forum.post') }}">发帖</a></h3></dt>
-                <dt><h3><a href="{{ url_for('forum.square') }}">个人页面</a></h3></dt>
+                <dt><h3><a href="{{ url_for('post.post') }}">发帖</a></h3></dt>
+                <dt><h3><a href="{{ url_for('user.personal_page',id = g.user[0]) }}">个人页面</a></h3></dt>
             {% endif %}
         </ul>
     </div>
 </form>
 {#右下角内容#}
 {% block content %}
-    <iframe class="iframe" name="iframe" src="{{ url_for('forum.slideshow') }}" width="1600" height="800"></iframe>
+    <iframe class="iframe" name="iframe" src="{{ url_for('forum.homepage') }}" width="1600" height="800"></iframe>
 {% endblock %}
 
 </body>

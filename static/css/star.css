@@ -69,21 +69,21 @@ i {
 /*极速秒评*/
 .xzw_starSys .description {
     clear: both;
-    padding: 10px 0px
+    padding: 10px 0
 }
 
 .xzw_starSys .star {
     height: 25px;
     width: 105px;
     position: relative;
-    background: repeat-x;
+    background: url(../img/lanrentuku.png) repeat-x;
     cursor: pointer
 }
 
 .xzw_starSys .star li {
     float: left;
-    padding: 0px;
-    margin: 0px
+    padding: 0;
+    margin: 0
 }
 
 .xzw_starSys .star li a {

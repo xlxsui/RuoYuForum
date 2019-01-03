@@ -133,6 +133,14 @@
         }
 
     </style>
+    <!-- CSS  -->
+    <link href="{{ url_for('static',filename='css/materialize.css') }}" type="text/css" rel="stylesheet"
+          media="screen,projection"/>
+    <!-- Default Theme CSS File-->
+    <link id="switcher" href="{{ url_for('static',filename='css/themes/default-theme.css') }}" type=" text/css"
+          rel="stylesheet" media="screen,projection"/>
+    <!-- Font -->
+    <link href="{{ url_for('static',filename='css/icon.css') }}" rel="stylesheet">
 </head>
 <body>
 
@@ -164,7 +172,78 @@
     </div>
 </div>
 
-<script type="text/javascript" src="{{ url_for('static',filename='js/jquery-3.1.1.min.js') }}"></script>
+
+<!-- BEGAIN PRELOADER -->
+<div id="preloader">
+    <div class="progress">
+        <div class="indeterminate"></div>
+    </div>
+</div>
+<!-- END PRELOADER -->
+
+<div class="main-wrapper">
+    <main role="main">
+        <section id="blog-details">
+            <div class="container">
+                <div class="row">
+                    <div class="s12 m8 l8">
+                        <div class="blog-content blog-archive">
+                            <!--Posts-->
+                            {% for i in range(length) %}
+                                <!-- Start Single Blog-->
+                                <div class="blog-post">
+                                    <div class="card">
+                                        <div class="card-content blog-post-content">
+                                            <h2>
+                                                <a href="{{ url_for('post.post_details',id = posts[i][0]) }}">{{ posts[i][1] }}</a>
+                                            </h2>
+                                            <div class="meta-media">
+                                                <div class="single-meta" style="display: inline;">
+                                                    <img class="avatar"
+                                                         style="width: 64px;height: 64px; border-radius: 8px;margin-right: 20px;"
+                                                         src="{{ url_for('static',filename='img/avatar/7.jpg') }}"/>
+                                                    <a href="#">用户：{{ authors[i][2] }}</a><br>
+                                                    时间：<a>{{ posts[i][3] }}</a>
+                                                </div>
+                                                <div class="single-meta">
+                                                    分类：<a href="#">电影</a>
+                                                </div>
+                                            </div>
+                                            <p>{{ posts[i][2] }}</p>
+                                        </div>
+                                        <div class="card-action">
+                                            <a href="#" class="post-comment"><i
+                                                    class="material-icons">comment</i><span>15</span></a>
+                                            <a href="{{ url_for('post.post_details',id = posts[i][0]) }}" class="readmore-btn">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+<!-- jQuery Library -->
+<script type="text/javascript" src="{{ url_for('static',filename='js/jquery-2.1.1.js') }}"></script>
+<!-- Materialize js -->
+<script type="text/javascript" src="{{ url_for('static',filename='js/materialize.min.js') }}"></script>
+<!-- Skill Progress Bar -->
+<script src="{{ url_for('static',filename='js/appear.min.js') }}" type="text/javascript"></script>
+<script src="{{ url_for('static',filename='js/pro-bars.min.js') }}" type="text/javascript"></script>
+<!-- Owl slider -->
+<script src="{{ url_for('static',filename='js/owl.carousel.min.js') }}"></script>
+<!-- Mixit slider  -->
+<script src="{{ url_for('static',filename='js/jquery.mixitup.js') }}"></script>
+<!-- counter -->
+<script src="{{ url_for('static',filename='js/waypoints.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/jquery.counterup.min.js') }}"></script>
+
+<!-- Custom Js -->
+<script src="{{ url_for('static',filename='js/custom.js') }}"></script>
+
 <script type="text/javascript">
     var $a = $(".buttons a");
     var $s = $(".buttons span");
@@ -287,10 +366,6 @@
     //			进入页面自动开始定时器
     timer = setInterval(nextimg, 4000);
 </script>
-
-
-<div style="text-align:center;clear:both">
-</div>
 
 
 </body>

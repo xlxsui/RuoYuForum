@@ -33,5 +33,11 @@ def create_app(test_config=None):
     from . import movie
     app.register_blueprint(movie.bp)
 
+    from . import user
+    app.register_blueprint(user.bp)
+
+    from . import post
+    app.register_blueprint(post.bp)
+
     app.app_context()
     return app

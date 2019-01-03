@@ -1,0 +1,6 @@
+{% extends 'forum/Main.html' %}
+
+{% block content %}
+    <iframe class="iframe" name="iframe" src="{{ url_for('user.personal_page_content') }}" width="1600"
+            height="800"></iframe>
+{% endblock %}

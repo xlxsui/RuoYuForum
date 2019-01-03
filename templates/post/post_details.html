@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <title>帖子</title>
+
+    <!-- CSS  -->
+    <link href="{{ url_for('static',filename='css/materialize.css') }}" type="text/css" rel="stylesheet"
+          media="screen,projection"/>
+    <!-- Default Theme CSS File-->
+    <link id="switcher" href="{{ url_for('static',filename='css/themes/default-theme.css') }}" type="text/css"
+          rel="stylesheet" media="screen,projection"/>
+    <!-- Main css File -->
+    <link href="{{ url_for('static',filename='css/style1.css') }}" type="text/css" rel="stylesheet"
+          media="screen,projection"/>
+
+    <!-- Font -->
+    <link href="{{ url_for('static',filename='css/icon.css') }}" rel="stylesheet">
+
+</head>
+
+<body>
+<!-- BEGAIN PRELOADER -->
+<div id="preloader">
+    <div class="progress">
+        <div class="indeterminate"></div>
+    </div>
+</div>
+<!-- END PRELOADER -->
+<div class="main-wrapper">
+    <main role="main">
+        <!-- START BLOG BANNER -->
+        <section id="banner">
+            <div class="parallax-container">
+                <div class="parallax">
+                    <img src="{{ url_for('static',filename='img/blog1.jpg') }}">
+                </div>
+                <div class="overlay-header">
+                </div>
+                <div class="overlay-content">
+                    <div class="container">
+                        <h1 class="header-title">{{ post[1] }}</h1>
+                        <div class="meta-media">
+                            <div class="single-meta">
+                                作者ID：<a href="#">{{ post[4] }}</a>
+                            </div>
+                            <div class="single-meta">
+                                分类：<a href="#">Web/Design</a>,<a href="#">Graphics</a>
+                            </div>
+                            <div class="single-meta">
+                                <a href="#" class="post-comment"><i
+                                        class="material-icons">评论</i><span>15</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog-details">
+            <div class="container">
+                <div class="row">
+                    <div class="s12 m8 l8">
+                        <div class="blog-content">
+                            <div class="blog-image">
+                                <img style="margin: 16px;border-radius:8px"
+                                     src="{{ url_for('static',filename='img/blog1.jpg') }}">
+                            </div>
+                            <p>{{ post[2] }}</p>
+
+                            <!-- Start Blog Content Bottom -->
+                            <div class="blog-content-bottom">
+                                <div class="row">
+                                    <div class="col s12 m3 l3">
+                                        <div class="share-area">
+                                            <h4>
+                                                <i class="fa fa-share-alt"></i>
+                                                share
+                                            </h4>
+                                            <a href="#"><i class="fa fa-facebook"></i></a>
+                                            <a href="#"><i class="fa fa-twitter"></i></a>
+                                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="col s12 m9 l9">
+                                        <div class="tag-area">
+                                            <h4>
+                                                <i class="fa fa-tag"></i>
+                                                Tag
+                                            </h4>
+                                            <a href="#">Web Design,</a>
+                                            <a href="#">Graphics,</a>
+                                            <a href="#">Fashion,</a>
+                                            <a href="#">Technology,</a>
+                                            <a href="#">Image,</a>
+                                            <a href="#">Marketing</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Start Blog Navigation -->
+                        <div class="blog-navigation">
+                            <div class="blog-navigation-left">
+                                <a class="prev-post" href="#">Prev Post</a>
+                            </div>
+                            <div class="blog-navigation-right">
+                                <a class="next-post" href="#">Next Post</a>
+                            </div>
+                        </div>
+                        <!-- Start Comments -->
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="comments-area">
+                                    <h3 class="comments-title">{{ comments_length }} Comments</h3>
+                                    <div class="comments">
+                                        <ul class="commentlist">
+                                            {% for i in range(comments_length) %}
+                                                <li>
+                                                    <div class="media">
+                                                        <div class="media-left">
+                                                            <img class="media-object news-img"
+                                                                 src="{{ url_for('static',filename='img/avatar/7.jpg') }}"
+                                                                 alt="img">
+                                                        </div>
+                                                        <div class="media-body">
+                                                            <h4 class="author-name">{{ repliers[i][2] }}</h4>
+                                                            <span class="comments-date">{{ comments[i][3] }}</span>
+                                                            <p>{{ comments[i][2] }}</p>
+                                                            <a href="#" class="reply-btn">Reply</a>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Start Pagination -->
+                        <div class="row">
+                            <div class=" s12">
+                                <ul class="pagination custom-pagination">
+                                    <li><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                                    <li class="active"><a href="#!">1</a></li>
+                                    <li class="waves-effect"><a href="#!">2</a></li>
+                                    <li class="waves-effect"><a href="#!">3</a></li>
+                                    <li class="waves-effect"><a href="#!">4</a></li>
+                                    <li class="waves-effect"><a href="#!">5</a></li>
+                                    <li class="waves-effect"><a href="#!"><i
+                                            class="material-icons">chevron_right</i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- start respond form -->
+                        <div id="respond">
+                            <h2 class="reply-title">Leave a reply</h2>
+                            <form id="commentform" method="post">
+                                <p class="comment-form-comment">
+                                    <label for="comment">Comment
+                                        <textarea required="required" aria-required="true" rows="8"
+                                                  cols="45" name="comment"></textarea>
+                                    </label>
+                                </p>
+                                <p class="form-submit">
+                                    <input type="submit" value="Post Comment" class="mu-send-msg-btn"
+                                           name="submit">
+                                </p>
+
+                            </form>
+                        </div>
+                        <!-- end respond form -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+<!-- jQuery Library -->
+<script type="text/javascript" src="{{ url_for('static',filename='js/jquery-2.1.1.js') }}"></script>
+<!-- Materialize js -->
+<script type="text/javascript" src="{{ url_for('static',filename='js/materialize.min.js') }}"></script>
+<!-- Skill Progress Bar -->
+<script src="{{ url_for('static',filename='js/appear.min.js') }}" type="text/javascript"></script>
+<script src="{{ url_for('static',filename='js/pro-bars.min.js') }}" type="text/javascript"></script>
+<!-- Owl slider -->
+<script src="{{ url_for('static',filename='js/owl.carousel.min.js') }}"></script>
+<!-- Mixit slider  -->
+<script src="{{ url_for('static',filename='js/jquery.mixitup.js') }}"></script>
+<!-- counter -->
+<script src="{{ url_for('static',filename='js/waypoints.min.js') }}"></script>
+<script src="{{ url_for('static',filename='js/jquery.counterup.min.js') }}"></script>
+
+<!-- Custom Js -->
+<script src="{{ url_for('static',filename='js/custom.js') }}"></script>
+</body>
+</html>

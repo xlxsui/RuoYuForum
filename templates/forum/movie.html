@@ -7,23 +7,22 @@
     <script type="text/javascript" src="{{ url_for('static',filename='js/script.js') }}"></script>
 </head>
 <body>
-<img src="{{ url_for('static',filename='img/dongwu.jpg') }}" width="320" height="440"
+<img src="{{ url_for('static',filename='') }}{{ movie[8] }}" width="320" height="440"
      style="position:absolute; left:50px; top:50px;"/>
 <div style="position:absolute; left:400px; top:55px;">
-    <p><span>导演:</span> 大卫·叶茨</p>
-    <p><span>编剧:</span> J·K·罗琳</p>
-    <p><span>主演:</span> 埃迪·雷德梅恩 / 凯瑟琳·沃特斯顿 / 约翰尼·德普 / 裘德·洛 / 埃兹拉·米勒 / 更多...</p>
-    <p><span>类型:</span> 奇幻 / 冒险</p>
-    <p><span>制片国家/地区:</span> 美国 / 英国</p>
-    <p><span>语言:</span> 英语</p>
-    <p><span>上映日期:</span> 2018-11-16(中国大陆/美国)</p>
-    <p><span>片长:</span> 134分钟</p>
-    <p><span>又名:</span> 神奇动物在哪里2：格林德沃之罪 / 怪兽与葛林戴华德之罪(港) / 怪兽与葛林戴华德的罪行(台) / 神奇动物在哪里2 / 神奇动物2 / Fantastic Beasts and Where
-        to Find Them 2</p>
+    <p><span>导演:</span> {{ movie[6] }}</p>
+    <p><span>编剧:</span> {{ movie[9] }}</p>
+    <p><span>主演:</span> {{ movie[1] }}</p>
+    <p><span>类型:</span> {{ movie[10] }}</p>
+    <p><span>制片国家/地区:</span> {{ movie[11] }}</p>
+    <p><span>语言:</span> {{ movie[5] }}</p>
+    <p><span>上映日期:</span> {{ movie[4] }}({{ movie[12] }})</p>
+    <p><span>片长:</span> {{ movie[13] }}分钟</p>
+    <p><span>又名:</span> {{ movie[14] }}</p>
 
 
     <!--星星-->
-    <div class="xzw_starSys" style="position:absolute; left:0px; top:310px;">
+    <div class="xzw_starSys" style="position:absolute; left:0; top:310px;">
         <div class="xzw_starBox">
             <ul class="star stars">
                 <li><a href="javascript:void(0)" title="1" class="one-star">1</a></li>
@@ -64,7 +63,7 @@
     </div>
 
 </div>
-<a href="{{ url_for('forum.postcontent') }}" class="button button1" style="position:absolute; left:50px; top:550px;"><p>
+<a href="{{ url_for('post.postcontent') }}" class="button button1" style="position:absolute; left:50px; top:550px;"><p>
     写影评</p>
 </a>
 </body>

@@ -27,7 +27,7 @@ body {
 }
 
 .touxiang {
-    position: absolute;
+    /*position: absolute;*/
     width: 3%;
     height: 85%;
     margin: 4px auto auto -5px;
@@ -176,18 +176,17 @@ input {
     width: 300px; /*点击输入时输入框变长*/
 }
 
-.bar button { /*搜索小按钮*/
+.bar button {
     background: none;
     position: absolute;
-    left: 420px;
-    top: 28px;
+    left: 390px;
+    top: 18px;
     right: 20px;
     border: none;
     outline: none;
 }
 
 .bar button:before {
-    content: "搜索";
     font-family: FontAwesome;
     color: #000000;
 }

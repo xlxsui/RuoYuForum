@@ -20,23 +20,22 @@
 <body>
 
 <form class="form" action="#" method="post" name=newform onSubmit="return check()">
+    <div class="form-group">
+        <p>
+            <label>请输入标题：</label>
+            <input class="form-control" type="text" style="width:1000px" name='title' placeholder="帖子主题"/>
+        </p>
 
-    <p>
-        <label>请输入标题：</label>
+        <p class="text">
+            <label>请输入内容：</label>
+            <textarea class="form-control" name='content' placeholder=畅所欲言吧~></textarea>
+        </p>
 
-        <input type="text" style="width:1000px" name=title placeholder="帖子主题"/>
-
-    </p>
-
-    <p class="text">
-        <label>请输入内容：</label>
-        <textarea name=content placeholder=畅所欲言吧~></textarea>
-    </p>
-
-    <p class="submit" style="position:absolute;left:1000px;">
-        <input type="submit" value="发表"/>
-        <input type=reset value="重填">
-    </p>
+        <p class="submit" style="position:absolute;left:1000px;">
+            <input class="btn btn-primary" type="submit" value="发表"/>
+            <input class="btn btn-primary" type=reset value="重填">
+        </p>
+    </div>
 </form>
 </body>
 </html>  

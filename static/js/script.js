@@ -1,7 +1,7 @@
 //star
 $(document).ready(function(){
     var stepW = 30;
-    var description = new Array("差劲","勉强好看","还算好看","精彩","完美");
+    var description = new Array("宸姴","鍕夊己濂界湅","杩樼畻濂界湅","绮惧僵","瀹岀編");
     var stars = $(".stars > li");
     var descriptionTemp;
     var option = $(".option");

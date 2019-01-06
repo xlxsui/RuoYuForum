@@ -8,6 +8,7 @@ from auth import login_required
 bp = Blueprint('post', __name__)
 
 
+# 帖子详情
 @bp.route('/post_details/<int:id>', methods=['GET', 'POST'])
 def post_details(id):
     # 先把帖子拿出来再说

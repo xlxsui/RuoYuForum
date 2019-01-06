@@ -2,15 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ url_for('static',filename='css/new.css') }}" type="text/css"/>
+    <!--Import Google Icon Font-->
+    <link href="{{ url_for('static',filename='css/icon.css') }}" rel="stylesheet"/>
+    <!--Import materialize css-->
+    <link href="{{ url_for('static',filename='css/materialize.css') }}" type="text/css" rel="stylesheet"
+          media="screen,projection"/>
+    <!--default theme-->
+    <link id="switcher" href="{{ url_for('static',filename='css/themes/default-theme.css') }}" type="text/css"
+          rel="stylesheet" media="screen,projection"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 </head>
 <script language="javascript">
     function check() {
-        if (document.newform.title.value == "") {
+        if (document.newform.title.value === "") {
             alert("请输入标题");
             return false;
         }
-        if (document.newform.content.value == "") {
+        if (document.newform.content.value === "") {
             alert("请输入帖子内容");
             return false;
         }
@@ -18,24 +26,43 @@
     }
 </script>
 <body>
+<div class="row container">
+    <form class="col s12" action="#" method="post" name=newform onSubmit="return check()" enctype="multipart/form-data">
+{#        标题#}
+        <div class="row">
+            <div class="input-field col s12">
+                <input required="required" id="title" type="text" class="validate" name="title">
+                <label for="title">标题</label>
+            </div>
+        </div>
+{#        帖子内容#}
+        <div class="row">
+            <div class="input-field col s12">
+                <textarea name="content" required="required" id="content" class="materialize-textarea"></textarea>
+                <label for="content">请输入内容</label>
+            </div>
+        </div>
+{#        发表图片#}
+        <div class="file-field input-field">
+            <div class="btn">
+                <span>图片</span>
+                <input name="picture" type="file"/>
+            </div>
+            <div class="file-path-wrapper">
+                <label for="file"></label>
+                <input id="file" class="file-path validate" type="text">
+            </div>
+        </div>
 
-<form class="form" action="#" method="post" name=newform onSubmit="return check()">
-    <div class="form-group">
-        <p>
-            <label>请输入标题：</label>
-            <input class="form-control" type="text" style="width:1000px" name='title' placeholder="帖子主题"/>
-        </p>
-
-        <p class="text">
-            <label>请输入内容：</label>
-            <textarea class="form-control" name='content' placeholder=畅所欲言吧~></textarea>
-        </p>
-
-        <p class="submit" style="position:absolute;left:1000px;">
-            <input class="btn btn-primary" type="submit" value="发表"/>
-            <input class="btn btn-primary" type=reset value="重填">
-        </p>
-    </div>
-</form>
+        <button class="btn waves-effect waves-light" type="submit">发表
+            <i class="material-icons right">send</i>
+        </button>
+        <button class="btn waves-effect waves-light" type=reset>重填</button>
+    </form>
+</div>
+<!-- jQuery Library -->
+<script type="text/javascript" src="{{ url_for('static',filename='js/jquery-3.1.1.min.js') }}"></script>
+<!-- Materialize js -->
+<script type="text/javascript" src="{{ url_for('static',filename='js/materialize.min.js') }}"></script>
 </body>
 </html>  

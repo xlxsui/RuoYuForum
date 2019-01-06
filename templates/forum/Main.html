@@ -21,7 +21,7 @@
     <img class="ruoyu" src="{{ url_for('static',filename='img/RuoYu.png') }}" alt=""/>
     {% if g.user %}
 
-        <a style="margin: 16px;margin-left:-100px;color: #ff0080;"
+        <a style="margin: 16px 16px 16px -100px;color: #ff0080;"
            href="{{ url_for('user.personal_page',id=g.user[0]) }}">{{ g.user[2] }}</a>
         <a href="{{ url_for('user.personal_page',id=g.user[0]) }}">
             <img class="touxiang rounded-circle" src="{{ url_for('static',filename='') }}{{ g.user[5] }}" alt=""/>

@@ -1,5 +1,84 @@
 {% extends 'forum/Main.html' %}
 
 {% block content %}
-    <iframe class="iframe" name="iframe" src="{{ url_for('forum.showcontent') }}" width="1600" height="800"></iframe>
+     <link rel="stylesheet" href="{{ url_for('static',filename='css/hot.css') }}">
+    <div class="comm-box">
+    <div class="comm-header">
+        <h3>即将上映的电影</h3>
+    </div>
+    <div class="comm-content">
+        <ul class="comm-content-list clearfix">
+            <li>
+                <div class="comm-list-item">
+                    <img src="{{ url_for('static',filename='img/bumblebee.jpg') }}" alt=""/>
+                    <div class="comm-list-cont">
+                        <div class="comm-list-text">
+                            <p>《大黄蜂》</p>
+                            <p>大黄蜂大电影 / 大黄蜂独立电影 / 变形金刚外传：大黄蜂 / 变形金刚外传大黄蜂 / Brighton Falls</p>
+                            <div>
+                                <a href="#" class="comm-go-home">电影详情页</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="comm-list-item">
+                    <img src="{{ url_for('static',filename='img/tangren.jpg') }}" alt="">
+
+                    <div class="comm-list-cont">
+                        <div class="comm-list-text">
+                            <p>《唐人街探案3》</p>
+                            <div>
+                                <a href="#" class="comm-go-home">电影详情页</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="comm-list-item">
+                    <img src="{{ url_for('static',filename='img/shentangou.jpg') }}" alt="">
+
+                    <div class="comm-list-cont">
+                        <div class="comm-list-text">
+                            <p>《神探狗笨吉》</p>
+                            <div>
+                                <a href="#" class="comm-go-home">电影详情页</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="comm-list-item">
+                    <img src="{{ url_for('static',filename='img/yindu.jpg') }}" alt="">
+
+                    <div class="comm-list-cont">
+                        <div class="comm-list-text">
+                            <p>《印度暴徒》</p>
+                            <div>
+                                <a href="#" class="comm-go-home">电影详情页</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="comm-list-item">
+                    <img src="{{ url_for('static',filename='img/waixingren.jpg') }}" alt="">
+
+                    <div class="comm-list-cont">
+                        <div class="comm-list-text">
+                            <p>《疯狂的外星人》</p>
+                            <div>
+                                <a href="#" class="comm-go-home">电影详情页</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
 {% endblock %}

@@ -1,0 +1,126 @@
+{% extends 'forum/Main.html' %}
+
+{% block content %}
+    <!-- Default Theme CSS File-->
+    <link id="switcher" href="{{ url_for('static',filename='css/themes/default-theme.css') }}" type="text/css"
+          rel="stylesheet" media="screen,projection"/>
+    <!-- Main css File -->
+    <link href="{{ url_for('static',filename='css/style1.css') }}" type="text/css" rel="stylesheet"
+          media="screen,projection"/>
+
+    <div class="container">
+        <main role="main">
+            <!-- START HOME SECTION -->
+            <section id="home">
+                <div class="overlay-section">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="home-inner">
+                                    <h1 class="home-title">HI! I'm <span>{{ g.user[2] }}</span></h1>
+                                    <p>{{ g.user[6] }}</p>
+                                    <a class="hire-me-btn btn waves-effect waves-light btn-large" href="#footer">联系我<i
+                                            class="mdi-content-send left"></i>
+                                    </a>
+                                    <!-- Call to About Button -->
+                                    <button class="btn btn-floating waves-effect waves-light btn-large white call-to-about">
+                                        <i class="material-icons">我</i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- START ABOUT SECTION -->
+            <section id="about">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="about-inner">
+                                <div class="row">
+                                    <div class="col s12 m4 l3">
+                                        <div class="about-inner-left">
+                                            <img class="profile-img"
+                                                 src="{{ url_for('static',filename='') }}{{ g.user[5] }}"
+                                                 alt="Profile Image">
+                                        </div>
+                                    </div>
+                                    <div class="col s12 m8 l9">
+                                        <div class="about-inner-right">
+                                            <h3>个人简介</h3>
+                                            <p>{{ g.user[6] }}</p>
+                                            <a href="{{ url_for('user.edit') }}">
+                                                <button class="btn">编辑</button>
+                                            </a>
+                                            <div class="personal-information col s12 m12 l6">
+                                                <h3>个人信息</h3>
+                                                <ul>
+                                                    <li><span>名字 : </span>{{ g.user[2] }}</li>
+                                                    <li><span>年龄 : </span>1 Years</li>
+                                                    <li><span>电话 : </span>+8610086</li>
+                                                    <li><span>邮箱 : </span>{{ g.user[1] }}</li>
+                                                    <li><span>地址 : </span>STU,Shantou China</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Start Blog -->
+            <section id="blog">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12">
+                            <div class="blog-inner">
+                                <h2 class="title">帖子</h2>
+                                <p>我发表过的帖子。</p>
+
+                                <!-- Start Blog area -->
+                                <div class="blog-area">
+                                    <div class="row">
+                                        <!-- Start single blog post -->
+                                        <div class="col s12 m4 l4">
+                                            <div class="blog-post">
+                                                <div class="card">
+                                                    <div class="card-image">
+                                                        <img src="{{ url_for('static',filename='') }}img/blog1.jpg">
+                                                    </div>
+                                                    <div class="card-content blog-post-content">
+                                                        <h2><a href="#">标题</a></h2>
+                                                        <div class="meta-media">
+                                                            <div class="single-meta">
+                                                                作者：<a href="#">Admin</a>
+                                                            </div>
+                                                            <div class="single-meta">
+                                                                类型：<a href="#">Web/Design</a>
+                                                            </div>
+                                                        </div>
+                                                        <p>帖子内容。</p>
+                                                    </div>
+                                                    <div class="card-action">
+                                                        <a class="post-comment" href="#"><i
+                                                                class="material-icons">评论</i><span>15</span></a>
+                                                        <a class="readmore-btn" href="#">更多</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- All Post Button -->
+                                    <a class="waves-effect waves-light btn-large allpost-btn" href="#">All
+                                        Post</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+{% endblock %}

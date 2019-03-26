@@ -1,5 +1,54 @@
 {% extends 'forum/Main.html' %}
 
 {% block content %}
-    <iframe class="iframe" name="iframe" src="{{ url_for('post.postcontent') }}" width="1600" height="800"></iframe>
+    <link id="switcher" href="{{ url_for('static',filename='css/themes/default-theme.css') }}" type="text/css"
+          rel="stylesheet" media="screen,projection"/>
+    <div class="row container">
+        <form class="col s12" action="#" method="post" name=newform onSubmit="return check()"
+              enctype="multipart/form-data">
+            {#        标题#}
+            <div class="row">
+                <div class="input-field col s12">
+                    <input required="required" id="title" type="text" class="validate" name="title">
+                    <label for="title">标题</label>
+                </div>
+            </div>
+            {#        帖子内容#}
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea name="content" required="required" id="content" class="materialize-textarea"></textarea>
+                    <label for="content">请输入内容</label>
+                </div>
+            </div>
+            {#        发表图片#}
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>图片</span>
+                    <input name="picture" type="file"/>
+                </div>
+                <div class="file-path-wrapper">
+                    <label for="file"></label>
+                    <input id="file" class="file-path validate" type="text">
+                </div>
+            </div>
+
+            <button class="btn waves-effect waves-light" type="submit">发表
+                <i class="material-icons right">send</i>
+            </button>
+            <button class="btn waves-effect waves-light" type=reset>重填</button>
+        </form>
+    </div>
+    <script language="javascript">
+        function check() {
+            if (document.newform.title.value === "") {
+                alert("请输入标题");
+                return false;
+            }
+            if (document.newform.content.value === "") {
+                alert("请输入帖子内容");
+                return false;
+            }
+            return true;
+        }
+    </script>
 {% endblock %}

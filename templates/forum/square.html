@@ -1,5 +1,73 @@
 {% extends 'forum/Main.html' %}
 
 {% block content %}
-    <iframe class="iframe" name="iframe" src="{{ url_for('forum.squarecontent') }}" width="1600" height="800"></iframe>
+    <link id="switcher" href="{{ url_for('static',filename='css/themes/default-theme.css') }}" type=" text/css"
+          rel="stylesheet" media="screen,projection"/>
+    <!-- Font -->
+    <div class="main-wrapper">
+        <main role="main">
+            <section id="blog-details">
+                <div class="container">
+                    <div class="row">
+                        <div class="s12 m8 l8">
+                            <div class="blog-content blog-archive">
+                                {% for i in range(length) %}
+                                    <!-- Start Single Blog-->
+                                    <div class="blog-post">
+                                        <div class="card">
+                                            {# 图片 #}
+                                            <div class="card-image">
+                                                {#                                            <img src="{{ url_for('static',filename='img/7.jpg') }}">#}
+                                            </div>
+                                            <div class="card-content blog-post-content">
+                                                <h2>
+                                                    <a href="{{ url_for('post.post_details',id = posts[i][0]) }}">{{ posts[i][1] }}</a>
+                                                </h2>
+                                                <div class="meta-media">
+
+                                                    <div class="single-meta" style="display: inline;">
+                                                        <img class="avatar"
+                                                             style="width: 64px;height: 64px; border-radius: 5px;margin-right: 20px;"
+                                                             src="
+                                                                     {{ url_for('static',filename='') }}{{ authors[i][5] }}"/>
+                                                        <a href="#">用户：{{ authors[i][2] }}</a><br>
+                                                        时间：<a>{{ posts[i][3] }}</a>
+                                                    </div>
+                                                    <div class="single-meta">
+                                                        分类：<a href="#">电影</a>
+                                                    </div>
+                                                </div>
+                                                <p>{{ posts[i][2] }}</p>
+                                            </div>
+                                            <div class="card-action">
+                                                <a href="#" class="post-comment"><i
+                                                        class="material-icons">comment</i><span>15</span></a>
+                                                <a href="{{ url_for('post.post_details',id = posts[i][0]) }}"
+                                                   class="readmore-btn">Read More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <!-- Start Pagination -->
+                            <div class="row">
+                                <div class="s12">
+                                    <ul class="pagination custom-pagination">
+                                        <li><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                                        <li class="active"><a href="#!">1</a></li>
+                                        <li class="waves-effect"><a href="#!">2</a></li>
+                                        <li class="waves-effect"><a href="#!">3</a></li>
+                                        <li class="waves-effect"><a href="#!">4</a></li>
+                                        <li class="waves-effect"><a href="#!">5</a></li>
+                                        <li class="waves-effect"><a href="#!"><i
+                                                class="material-icons">chevron_right</i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
 {% endblock %}

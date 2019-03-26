@@ -1,5 +1,89 @@
 {% extends 'forum/Main.html' %}
 
 {% block content %}
-    <iframe class="iframe" name="iframe" src="{{ url_for('forum.hotcontent') }}" width="1600" height="800"></iframe>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/hot.css') }}">
+    <div class="comm-box">
+    <div class="comm-header">
+        <h3>正在热映的电影</h3>
+    </div>
+    <div class="comm-content">
+        <ul class="comm-content-list clearfix">
+            <li>
+                <div class="comm-list-item">
+                    <img src="{{ url_for('static',filename='img/yaoshen.jpg') }}" alt=""/>
+                    <div class="comm-list-cont">
+                        <div class="comm-list-text">
+                            <p>《我不是药神》</p>
+                            <p>又名: 中国药神 / 印度药神 / 印度药商 / 生命之路 / Dying to Survive / Drug Dealer</p>
+                            <div>
+                                <a href="#" class="comm-go-home">电影详情页</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <div class="comm-list-item">
+                    <img src="{{ url_for('static',filename='img/dongwu.jpg') }}" alt="">
+
+                    <div class="comm-list-cont">
+                        <div class="comm-list-text">
+                            <p>《神奇动物：格林德沃之罪》</p>
+                            <p>又名: 神奇动物在哪里2：格林德沃之罪 / 怪兽与葛林戴华德之罪(港) / 怪兽与葛林戴华德的罪行(台) / ...</p>
+                            <div>
+                                <a href="{{ url_for('movie.movie',id = 5) }}" class="comm-go-home">电影详情页</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="comm-list-item">
+                    <img src="{{ url_for('static',filename='img/zhizhuxia.jpg') }}" alt="">
+
+                    <div class="comm-list-cont">
+                        <div class="comm-list-text">
+                            <p>《蜘蛛侠：平行宇宙》</p>
+                            <p>又名: 蜘蛛侠：新纪元 / 蜘蛛人：新宇宙(台) / 蜘蛛侠：跳入蜘蛛宇宙(港) / 蜘蛛侠：平行世界 / Spider-Man: a New Universe</p>
+                            <div>
+                                <a href="zhizhuxia.html" class="comm-go-home">电影详情页</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="comm-list-item">
+                    <img src="{{ url_for('static',filename='img/wushuang.jpg') }}" alt="">
+
+                    <div class="comm-list-cont">
+                        <div class="comm-list-text">
+                            <p>《无双》</p>
+                            <p>又名: Project Gutenberg / Mo seung</p>
+                            <div>
+                                <a href="wushuang.html" class="comm-go-home">电影详情页</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="comm-list-item">
+                    <img src="{{ url_for('static',filename='img/haoxi.jpg') }}" alt="">
+
+                    <div class="comm-list-cont">
+                        <div class="comm-list-text">
+                            <p>《一出好戏》</p>
+                            <p>又名: 大富翁 / 诳想曲 / The Island</p>
+                            <div>
+                                <a href="haoxi.html" class="comm-go-home">电影详情页</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
 {% endblock %}

@@ -16,13 +16,7 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 @bp.route('/user/<int:id>')
 @login_required
 def personal_page(id):
-    return render_template('forum/personalpage.html')
-
-
-@bp.route('/user/personal_page_content')
-@login_required
-def personal_page_content():
-    return render_template('user/personalpagecontent.html')
+    return render_template('user/personalpage.html')
 
 
 # 资料编辑
